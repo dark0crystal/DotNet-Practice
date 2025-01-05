@@ -4,7 +4,49 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@*This list is to render the radio buttons dynamically*@
+@{
+    var arr = new[]
+    {
+        new { name="rock" , val="حجرة"},
+        new {name="paper" , val="ورقة" },
+        new {name="scissors" ,val="مقص"}
+    };
+}
+
+<style>
+    .main-div{
+        background: #FFF6E9;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .form-style{
+        background: #80C4E9;
+        height: 60vh;
+        width: 60vw;
+        
+    }
+</style>
+
+
+
+<div class="main-div">
+    <h1 class="display-4">Welcome , fill this form</h1>
+    <form class="form-style">
+        <label>Select Your Choice:</label>
+        @foreach(var element in arr)
+        {
+            <div>
+                <input type="radio" name="choice" value="@element.name"/>
+                <label>@element.val</label>
+            </div>
+        }
+        
+        <input type="submit" value="العب"/>
+    </form>
 </div>
